@@ -125,5 +125,11 @@ public class User {
                 + ", roles=" + roles + "]";
     }
 
+    @Transient
+    public String getFullName() {
+        return this.firstName +" "+ this.lastName;
+    }
+
+
 
 }

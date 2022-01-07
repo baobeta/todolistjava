@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org" xmlns:xmls="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments :: page_head('Admin Todo Controller Panel')" />
+<body>
+<div class="container-fluid">
+    <div th:replace="navigation :: menu"></div>
+    <div>
+        <h2>Manage Categories</h2>
+        <a th:href="@{/categories/new}" class="fas fa-file-alt fa-2x icon-dark"> </a>
+    </div>
+
+
+    <div th:replace="fragments :: search_form_and_message('/categories/page/1')"/>
+
+    <div class="full-details">
+        <table  class="table table-bordered table-striped table-hover table-reponsive-xl">
+            <thead class="thead-dark" >
+            <tr>
+                <th>ID</th>
+                <th th:replace="fragments :: column_link('/categories','title', 'Title','none')"/></th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="cat : ${listcategories}">
+                <td>[[${cat.id}]]</td>
+                <td>[[${cat.title}]]</td>
+                <td>
+                    <div th:replace="fragments :: edit('category','/categories/edit/' + ${cat.id})" />
+                    <div th:replace="fragments :: delete('category',${cat.id},'/categories/delete/' + ${cat.id},true)" />
+
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    <div th:replace="fragments :: pagination('/categories', 'categories')"></div>
+
+    <!--	Modal confirm delete -->
+    <div th:replace="modal_fragments :: confirm_modal" />
+
+    <div th:replace="fragments :: footer"></div>
+
+</div>
+
+
+
+<script th:src="@{/js/common_list.js}"></script>
+<script type="text/javascript">
+    moduleURL = "[[@{/categories}]]";
+
+    $(document).ready(function() {
+        $(".link-delete").on("click", function(e) {
+            e.preventDefault();
+            showDeleteConfirmModal($(this), 'category');
+        });
+    });
+</script>
+</body>
+</html>

@@ -7,6 +7,14 @@ import javax.persistence.*;
 @Table(name = "categories")
 public class Category {
 
+    public Integer getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
