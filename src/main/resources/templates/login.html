@@ -20,6 +20,9 @@
     <div th:if="${param.logout}">
       <p class="text-warning">You have been logged out.</p>
     </div>
+    <div th:if="${message != null}" class="alert alert-success text-center">
+      [[${message}]]
+    </div>
     <div class="border border-secondary rounded p-3 ">
       <p>Access to Todo Control Panel</p>
       <p>

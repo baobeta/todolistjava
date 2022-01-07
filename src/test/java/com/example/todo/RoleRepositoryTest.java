@@ -40,4 +40,9 @@ public class RoleRepositoryTest {
         assertThat(result.getId()).isGreaterThan(0);
 
     }
+    @Test
+    public void findByRole() {
+        Role role = repo.findByName("USER");
+        assertThat(role.getId()).isGreaterThan(0);
+    }
 }

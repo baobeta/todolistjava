@@ -1,5 +1,6 @@
 package com.example.todo.service;
 import com.example.todo.entity.Task;
+import com.example.todo.entity.User;
 import com.example.todo.handleException.TaskNotFoundException;
 import com.example.todo.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,5 +77,15 @@ public class TaskService {
         repo.deleteById(id);
     }
 
+    public List<Task> getTaskByEmail(String email) {
+        return repo.getTaskByUserEmail(email);
+    }
 
+    public void updateCompletedTask (Integer id, boolean completed) {
+        repo.updateCompletedStatus(id, completed);
+    }
+
+    public Integer countTaskUncompleted (User user) {
+        return repo.countTaskByUserAndCompleteFalse(user.getId());
+    }
 }

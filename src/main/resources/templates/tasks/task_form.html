@@ -11,7 +11,6 @@
 
 
   <form th:action="@{/tasks/save}" method="post" style="max-width:700px; margin: 0 auto"
-        enctype="multipart/form-data"
         th:object="${task}" onsubmit="return checkTitleUnique(this)">
     <input type="hidden" th:field="*{id}"/>
     <div class="border border-secondary rounded p-3">

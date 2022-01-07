@@ -73,6 +73,17 @@ public class Task {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date deadline;
 
+    public boolean isComplete() {
+        return isComplete;
+    }
+
+    public void setComplete(boolean complete) {
+        isComplete = complete;
+    }
+
+    @Column(columnDefinition = "boolean default false")
+    private boolean isComplete;
+
     @ManyToOne
     @JoinColumn(name ="category_id")
     private Category category;

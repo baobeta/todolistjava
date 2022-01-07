@@ -136,7 +136,7 @@ public class TaskController {
         } catch (TaskNotFoundException ex) {
             redirectAttributes.addFlashAttribute("message",ex.getMessage());
         }
-        return "redirect:/categories";
+        return "redirect:/tasks";
 
     }
 
