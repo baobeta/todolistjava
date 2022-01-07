@@ -12,7 +12,7 @@
 
   <form th:action="@{/categories/save}" method="post" style="max-width:700px; margin: 0 auto"
         enctype="multipart/form-data"
-        th:object="${category}" onsubmit="return checkEmailUnique(this)">
+        th:object="${category}" onsubmit="return checkTitleUnique(this)">
     <input type="hidden" th:field="*{id}"/>
     <div class="border border-secondary rounded p-3">
 
@@ -35,7 +35,7 @@
 <script type="text/javascript">
   moduleURL = "[[@{/categories}]]";
 
-  function checkEmailUnique(form) {
+  function checkTitleUnique(form) {
     url = "[[@{/categories/check_title}]]";
     categoryTitle = $("#title").val();
     categoryId = $("#id").val();
@@ -47,7 +47,7 @@
       if (response == "OK") {
         form.submit();
       } else if (response == "Duplicated") {
-        showWarningModal("There is another title having the email " + categoryTitle);
+        showWarningModal("There is another category having the title " + categoryTitle);
       } else {
         showErrorModal("Unknown response from server");
       }

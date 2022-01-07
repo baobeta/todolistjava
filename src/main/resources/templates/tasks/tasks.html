@@ -5,30 +5,37 @@
 <div class="container-fluid">
     <div th:replace="navigation :: menu"></div>
     <div>
-        <h2>Manage Categories</h2>
-        <a th:href="@{/categories/new}" class="fas fa-file-alt fa-2x icon-dark"> </a>
+        <h2>Manage tasks</h2>
+        <a th:href="@{/tasks/new}" class="fas fa-file-alt fa-2x icon-dark"> </a>
     </div>
 
 
-    <div th:replace="fragments :: search_form_and_message('/categories/page/1')"/>
+    <div th:replace="fragments :: search_form_and_message('/tasks/page/1')"/>
 
     <div class="full-details">
         <table  class="table table-bordered table-striped table-hover table-reponsive-xl">
             <thead class="thead-dark" >
             <tr>
                 <th>ID</th>
-                <th th:replace="fragments :: column_link('/categories','title', 'Title','none')"/></th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Deadline</th>
+                <th>Category</th>
+                <th>User</th>
                 <th></th>
             </tr>
             </thead>
-
             <tbody>
-            <tr th:each="cat : ${listcategories}">
-                <td>[[${cat.id}]]</td>
-                <td>[[${cat.title}]]</td>
+            <tr th:each="task : ${listTasks}">
+                <td>[[${task.id}]]</td>
+                <td>[[${task.title}]]</td>
+                <td>[[${task.discription}]]</td>
+                <td>[[${#dates.format(task.deadline, 'dd-MM-yyyy')}]]</td>
+                <td>[[${task.category.title}]]</td>
+                <td>[[${task.user.fullName}]]</td>
                 <td>
-                    <div th:replace="fragments :: edit('category','/categories/edit/' + ${cat.id})" />
-                    <div th:replace="fragments :: delete('category',${cat.id},'/categories/delete/' + ${cat.id},true)" />
+                    <div th:replace="fragments :: edit('task','/tasks/edit/' + ${task.id})" />
+                    <div th:replace="fragments :: delete('task',${task.id},'/tasks/delete/' + ${task.id},true)" />
 
                 </td>
 
@@ -38,7 +45,9 @@
     </div>
 
 
-    <div th:replace="fragments :: pagination('/categories', 'categories')"></div>
+
+
+    <div th:replace="fragments :: pagination('/tasks', 'tasks')"></div>
 
     <!--	Modal confirm delete -->
     <div th:replace="modal_fragments :: confirm_modal" />
@@ -51,12 +60,12 @@
 
 <script th:src="@{/js/common_list.js}"></script>
 <script type="text/javascript">
-    moduleURL = "[[@{/categories}]]";
+    moduleURL = "[[@{/tasks}]]";
 
     $(document).ready(function() {
         $(".link-delete").on("click", function(e) {
             e.preventDefault();
-            showDeleteConfirmModal($(this), 'category');
+            showDeleteConfirmModal($(this), 'task');
         });
     });
 </script>

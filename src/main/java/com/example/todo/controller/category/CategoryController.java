@@ -96,7 +96,7 @@ public class CategoryController {
     }
 
     private String getRedirectURLtoAffectedCategory(Category category) {
-        return "redirect:/categories/page/1?sortField=id&sortDir=asc&keyword="+category.title;
+        return "redirect:/categories/page/1?sortField=id&sortDir=asc&keyword="+category.getTitle();
     }
 
     @GetMapping("/categories/edit/{id}")

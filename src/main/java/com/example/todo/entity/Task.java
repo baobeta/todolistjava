@@ -1,8 +1,10 @@
 package com.example.todo.entity;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Entity
@@ -29,6 +31,22 @@ public class Task {
         return discription;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public void setDiscription(String discription) {
         this.discription = discription;
     }
@@ -52,6 +70,7 @@ public class Task {
     private String discription;
 
     @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date deadline;
 
     @ManyToOne
