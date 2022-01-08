@@ -21,37 +21,37 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 @Rollback(false)
 public class UserRepositoryTest {
 
-    @Autowired
-    public UserRepository userRepo;
-
-    @Autowired
-    public RoleRepository roleRepo;
-
-    @Test
-    public void testCreateUser() {
-        User user1 = new User();
-        user1.setEmail("baobeta@gmail.com");
-        user1.setFirstName("Bao");
-        user1.setLastName("Le");
-        user1.setPassword("123456");
-        Set<Role> role = new HashSet<Role>();
-        role.add(roleRepo.findById(3).get());
-        user1.setRoles(role);
-        User result = userRepo.save(user1);
-    }
-
-    @Test
-    public void testUpdateUser() {
-        User user2 = userRepo.findById(1).get();
-        user2.setEmail("baobeta2907@gmail.com");
-        User result = userRepo.save(user2);
-        assertThat(result.getId()).isGreaterThan(0);
-
-    }
-
-    @Test
-    public void testDeleteUser(){
-        userRepo.deleteById(1);
-
-    }
+//    @Autowired
+//    public UserRepository userRepo;
+//
+//    @Autowired
+//    public RoleRepository roleRepo;
+//
+//    @Test
+//    public void testCreateUser() {
+//        User user1 = new User();
+//        user1.setEmail("baobeta@gmail.com");
+//        user1.setFirstName("Bao");
+//        user1.setLastName("Le");
+//        user1.setPassword("123456");
+//        Set<Role> role = new HashSet<Role>();
+//        role.add(roleRepo.findById(3).get());
+//        user1.setRoles(role);
+//        User result = userRepo.save(user1);
+//    }
+//
+//    @Test
+//    public void testUpdateUser() {
+//        User user2 = userRepo.findById(1).get();
+//        user2.setEmail("baobeta2907@gmail.com");
+//        User result = userRepo.save(user2);
+//        assertThat(result.getId()).isGreaterThan(0);
+//
+//    }
+//
+//    @Test
+//    public void testDeleteUser(){
+//        userRepo.deleteById(1);
+//
+//    }
 }

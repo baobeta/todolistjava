@@ -18,25 +18,25 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 @AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
 public class TaskRepositoryTest {
-
-    @Autowired
-    public TaskRepository repository;
-
-    @Autowired
-    public UserRepository repositoryUser;
-
-    @Test
-    public void testGetListTaskByEmail() {
-        List<Task> tasks = repository.getTaskByUserEmail("baobeta@gmail.com");
-        tasks.forEach(c->System.out.println(c.getTitle()));
-        assertThat(tasks.size()).isGreaterThan(0);
-    }
-
-    @Test
-    public void testCountTaskUncompled() {
-        User user =  repositoryUser.findById(7).get();
-        Integer count = repository.countTaskByUserAndCompleteFalse(7);
-        System.out.println(count);
-        assertThat(count).isGreaterThan(0);
-    }
+//
+//    @Autowired
+//    public TaskRepository repository;
+//
+//    @Autowired
+//    public UserRepository repositoryUser;
+//
+//    @Test
+//    public void testGetListTaskByEmail() {
+//        List<Task> tasks = repository.getTaskByUserEmail("baobeta@gmail.com");
+//        tasks.forEach(c->System.out.println(c.getTitle()));
+//        assertThat(tasks.size()).isGreaterThan(0);
+//    }
+//
+//    @Test
+//    public void testCountTaskUncompled() {
+//        User user =  repositoryUser.findById(7).get();
+//        Integer count = repository.countTaskByUserAndCompleteFalse(7);
+//        System.out.println(count);
+//        assertThat(count).isGreaterThan(0);
+//    }
 }

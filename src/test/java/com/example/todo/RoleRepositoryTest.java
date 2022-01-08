@@ -14,35 +14,35 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 @AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
 public class RoleRepositoryTest {
-    @Autowired
-    private RoleRepository repo;
-
-
-    @Test
-     public void createFirstRole() {
-         Role roleAdmin = new Role("ADMIN","Manage Everything");
-         Role result = repo.save(roleAdmin);
-         assertThat(result.getId()).isGreaterThan(0);
-
-     }
-
-     @Test
-    public void createSecondRole() {
-        Role roleAdmin = new Role("MOD","Manage Category, task");
-        Role result = repo.save(roleAdmin);
-        assertThat(result.getId()).isGreaterThan(0);
-
-    }
-    @Test
-    public void createThirdRole() {
-        Role roleAdmin = new Role("User","Manage task");
-        Role result = repo.save(roleAdmin);
-        assertThat(result.getId()).isGreaterThan(0);
-
-    }
-    @Test
-    public void findByRole() {
-        Role role = repo.findByName("USER");
-        assertThat(role.getId()).isGreaterThan(0);
-    }
+//    @Autowired
+//    private RoleRepository repo;
+//
+//
+//    @Test
+//     public void createFirstRole() {
+//         Role roleAdmin = new Role("ADMIN","Manage Everything");
+//         Role result = repo.save(roleAdmin);
+//         assertThat(result.getId()).isGreaterThan(0);
+//
+//     }
+//
+//     @Test
+//    public void createSecondRole() {
+//        Role roleAdmin = new Role("MOD","Manage Category, task");
+//        Role result = repo.save(roleAdmin);
+//        assertThat(result.getId()).isGreaterThan(0);
+//
+//    }
+//    @Test
+//    public void createThirdRole() {
+//        Role roleAdmin = new Role("User","Manage task");
+//        Role result = repo.save(roleAdmin);
+//        assertThat(result.getId()).isGreaterThan(0);
+//
+//    }
+//    @Test
+//    public void findByRole() {
+//        Role role = repo.findByName("USER");
+//        assertThat(role.getId()).isGreaterThan(0);
+//    }
 }
