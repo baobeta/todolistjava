@@ -6,17 +6,18 @@
 <div class="container-fluid">
     <div th:replace="navigation :: menu"></div>
 
+    <div class="text-center">
+        <h2>Register Acount User</h2>
+    </div>
+
+    <div th:if="${message != null}" class="alert alert-danger text-center container">
+        [[${message}]]
+    </div>
+
     <form th:action="@{/register}" method="post" style="max-width:700px; margin: 0 auto"
           enctype="multipart/form-data"
-          th:object="${user}">
-
-        <div class="text-center">
-            <h2>Register Acount User</h2>
-        </div>
-
-        <div th:if="${message != null}" class="alert alert-danger text-center">
-            [[${message}]]
-        </div>
+          th:object="${user}"
+    onsubmit="return checkEmailUnique(this)">
 
         <input type="hidden" th:field="*{id}"/>
         <div class="border border-secondary rounded p-3">
@@ -63,7 +64,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <input type="submit" value="Save" class="btn btn-primary m-3"/>
+                <input type="submit" value="Register" class="btn btn-primary m-3"/>
                 <input type="button" value="Cancel" class="btn btn-secondary" id="buttonCancel"/>
             </div>
         </div>

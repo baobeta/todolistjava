@@ -107,6 +107,14 @@ public class UserService {
         }
         return true;
     }
+    public boolean checkUserExists(User user) {
+        User userByEmail = userRepo.getUserByEmail(user.getEmail());
+        if(userByEmail == null) {
+            return false;
+        }else {
+            return true;
+        }
+    }
 
     public User get(Integer id) throws UserNotFoundException {
         try {

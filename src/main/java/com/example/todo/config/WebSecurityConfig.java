@@ -46,6 +46,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()// custom form login
                 .formLogin()
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/", true)
                 .loginPage("/login")
                 .usernameParameter("email")
                 .permitAll()
@@ -64,7 +66,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // Config ignore path image, js, webjars
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/images/**","/js/**","/webjars/**","/users/check_email","/register");
+        web.ignoring().antMatchers("/images/**","/js/**","/webjars/**","/forgetpassword","/register","/users/check_email");
     }
 
 

@@ -55,36 +55,7 @@ public class MainController {
         model.addAttribute("countTaskUncompleted",countTaskUncompleted);
         return "index";
     }
-    @GetMapping("/login")
-    public String viewPageLogin() {
-        return "login";
-    }
 
-    @GetMapping("/register")
-    public String viewPageRegister(Model model) {
-        User user = new User();
-        user.setEnabled(true);
-        model.addAttribute("user",user);
-        return "register";
-    }
-
-    @PostMapping("/register")
-    public String saveUser(User user,Model model, RedirectAttributes redirectAttributes) {
-        Set<Role> role = new HashSet<Role>();
-        role.add(roleService.findRoleUser());
-        user.setRoles(role);
-        user.setEnabled(true);
-        if(userService.isEmailUnique(user.getId(),user.getEmail())) {
-            userService.save(user);
-            redirectAttributes.addFlashAttribute("message","The user has been saved successfully.");
-            return "redirect:/login";
-        }
-        else {
-            redirectAttributes.addFlashAttribute("message","Email already exists, please login or register for a new account ");
-            return "redirect:/register";
-        }
-
-    }
 
 
     @PostMapping("/save")

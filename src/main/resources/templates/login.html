@@ -1,45 +1,54 @@
 <!DOCTYPE html>
 <html xmls:th="http://www.thymeleaf.org" xmlns:xmls="http://www.w3.org/1999/xhtml" lang="java">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width:device-width, initial-scale=1.0, minimum-scale=1.0">
-  <title>Login - Shopme Admin</title>
-  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width:device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Login - Shopme Admin</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
 
 </head>
 <body>
-
+<div th:replace="navigation :: menu"></div>
 <div class="container-fluid text-center">
-  <div>
-    <h2 class="text-center text-blue-50">To Do List</h2>
-  </div>
-  <form th:action="@{/login}" method="post" style="max-width: 350px; margin: 0 auto">
-    <div th:if="${param.error}">
-      <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]] </p>
+    <div>
+        <h2 class="text-center text-blue-50">To Do List</h2>
     </div>
-    <div th:if="${param.logout}">
-      <p class="text-warning">You have been logged out.</p>
-    </div>
-    <div th:if="${message != null}" class="alert alert-success text-center">
-      [[${message}]]
-    </div>
-    <div class="border border-secondary rounded p-3 ">
-      <p>Access to Todo Control Panel</p>
-      <p>
-        <input type="email"  name="email" class ="form-control" placeholder="E-mail" required/>
-      </p>
-      <p>
-        <input type="password"  name="password" class ="form-control" placeholder="Password" required/>
-      </p>
-      <p>
-        <input type="checkbox"  name="remember-me" /> &nbsp;Remember Me
-      </p>
-      <p>
-        <input type="submit" value="Login" class="btn btn-primary" />
-      </p>
-    </div>
-  </form>
-  <div th:replace="fragments :: footer"></div>
+    <form th:action="@{/login}" method="post" style="max-width: 350px; margin: 0 auto">
+        <div th:if="${param.error}">
+            <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]] </p>
+        </div>
+        <div th:if="${param.logout}">
+            <p class="text-warning">You have been logged out.</p>
+        </div>
+        <div th:if="${message != null}" class="alert alert-success text-center">
+            [[${message}]]
+        </div>
+        <a class="navbar-brand" th:href="@{/}">
+            <img height="100px" width="100px" th:src="@{/images/Todo.png}"/>
+        </a>
+        <div class="border border-secondary rounded p-3 ">
+            <p>Access to Todo Control Panel</p>
+            <p>
+                <input type="email" name="email" class="form-control" placeholder="E-mail" required/>
+            </p>
+            <p>
+                <input type="password" name="password" class="form-control" placeholder="Password" required/>
+            </p>
+            <p>
+                <span><input type="checkbox" name="remember-me"/> &nbsp;Remember Me</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span><a th:href="@{/forgetpassword}"> Forgot password?</a></span>
+            </p>
+            <p>
+                <input type="submit" value="Login" class="btn btn-primary"/>
+            </p>
+
+            <p>
+                <span>If you don't have an ancount? <a th:href="@{/register}">Create</a></span>
+            </p>
+        </div>
+    </form>
+    <div th:replace="fragments :: footer"></div>
 </div>
 
 </body>
